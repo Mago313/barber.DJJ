@@ -1,25 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import AuthorizationPage from "./pages/AuthorizationPage";
+import FirstPage from "./pages/FirstPage";
+import CategoriesPage from "./pages/CategoriesPage"
+import DatePage from "./pages/DatePage";
+import AdminPage from "./pages/AdminPage"
+
+
+export type State = {
+  name?: string
+  cards?: string[]
+  price?: number
+  dateTime?: string
+  phone?: number
+}
 
 function App() {
+  const [state, setState] = useState<State>({})
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<FirstPage state={state} />} />
+      <Route path="/sign-in" element={<AuthorizationPage />} />
+      <Route path="/categories" element={<CategoriesPage state={state} setState={setState} />} />
+      <Route path="/date" element={<DatePage />} />
+      <Route path="/admin" element={<AdminPage/>} />
+    </Routes>
   );
 }
 
