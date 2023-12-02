@@ -3,7 +3,7 @@ import "../App.css";
 import MainLayout from "../layouts/Mainlayout";
 import CategoriesCard from "../components/CategoriesCard";
 import date from "../assets/date.svg";
-import services from "../assets/free-icon-approve-sign-8426910.png";
+import services from "../assets/checkMark.png";
 import Modal from "../modal/Modal";
 import { State } from "../App";
 import { Button } from "../components/Button";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import AuthorizationPage from "./pages/AuthorizationPage";
@@ -14,11 +14,11 @@ export type State = {
   price?: number
   dateTime?: string
   phone?: number
-  
+
 }
 
 function App() {
-  const [state, setState] = useState<State>({})
+  const [state, setState] = React.useState<State>({})
 
 
   return (
