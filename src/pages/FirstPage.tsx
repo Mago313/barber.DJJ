@@ -1,16 +1,21 @@
-import React, { ReactChild, useState } from "react";
+import React from "react";
 import "../App.css";
 import MainLayout from "../layouts/Mainlayout";
 import CategoriesCard from "../components/CategoriesCard";
 import date from "../assets/date.svg";
 import services from "../assets/checkMark.png";
 import Modal from "../modal/Modal";
-import { State } from "../App";
 import { Button } from "../components/Button";
 import AdminPage from "./AdminPage";
+import { State } from "../types/state";
+
+type TProps = {
+  state: State
+  setState: React.Dispatch<React.SetStateAction<State>>
+}
 
 
-const Spacing = ({ children }: { children: ReactChild }) => {
+const Spacing = ({ children }: { children: React.ReactChild }) => {
   return (
     <div
       style={{
@@ -24,10 +29,11 @@ const Spacing = ({ children }: { children: ReactChild }) => {
       {children}
     </div>
   );
-};
-const FirstPage = ({ state }: { state: State }) => {
+}
 
-  const [modalActive, setModalActive] = useState(false)
+const FirstPage = ({ state, setState }: TProps) => {
+
+  const [modalActive, setModalActive] = React.useState(false)
 
   return (
     <MainLayout title="DJJ" subtitle="Уход за мужским имеджем">
@@ -39,9 +45,9 @@ const FirstPage = ({ state }: { state: State }) => {
           <CategoriesCard img={services} name="Услуги" link='/categories' />
         </Spacing>
         {modalActive || <Spacing>
-          {state.price ? <div style={{ flex: 1 }}><Button onClick={() => { setModalActive(!modalActive) }} title="Записаться" /></div> : <></>}
+          {state.price ? <div style={{ flex: 1 }}><Button onClick={() => { setModalActive(!modalActive) }} title="Продолжить" /></div> : <></>}
         </Spacing>}
-        {modalActive && <Modal active={modalActive} setActive={setModalActive} />}
+        {modalActive && <Modal active={modalActive} setActive={setModalActive} state={state} setState={setState}/> }
       </div>
     </MainLayout>
   );

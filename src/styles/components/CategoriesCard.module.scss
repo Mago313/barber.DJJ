@@ -1,5 +1,7 @@
 .card {
     width: 194px;
+    padding-top: 8px;
+    padding-bottom: 8;
     background: #ffffff;
     box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 18px;
@@ -34,3 +36,10 @@
       }
     }
   }
+
+.add { 
+  transform: rotate(90);
+}
+.remove {
+  transform: rotate(0);
+}
