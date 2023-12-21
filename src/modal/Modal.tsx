@@ -3,6 +3,7 @@ import styles from "../styles/modal/Modal.module.scss";
 import { State } from "../types/state";
 import { Button } from "../components/Button";
 import InputMask from 'react-input-mask'
+import { Link } from "react-router-dom";
 
 type TProps = {
     active: boolean
@@ -72,7 +73,10 @@ const Modal = ({ active, setActive, setState, state }: TProps) => {
                         </div>
                     </div>
                 </div>
-                <Button disabled={isDisabled} onClick={() => { setActive(false); setState(prevData => ({ ...prevData, phone: '+7 ', name: '' })) }} title="Записаться" />
+                <Link style={{textDecoration: 'none'}} to={'/'}>
+                <Button disabled={isDisabled} onClick={() => { setActive(false); setState(prevData => ({ ...prevData, phone: '+7 ', name: '', cards: [], dateTime: '', price: 0, time: '' })) }} title="Записаться" />
+                </Link>
+                
             </div>
         </div>
     );

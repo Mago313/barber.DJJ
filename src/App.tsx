@@ -9,15 +9,15 @@ import AdminPage from "./pages/AdminPage"
 import { State } from "./types/state";
 
 function App() {
-  const [state, setState] = React.useState<State>({name: '', cards: [], dateTime: '', phone: '+7 ', price: 0})
-
+  const [state, setState] = React.useState<State>({name: '', cards: [], dateTime: '', time: '', phone: '+7 ', price: 0})
+  const [modalActive, setModalActive] = React.useState(false)
 
   return (
     <Routes>
-      <Route path="/" element={<FirstPage state={state} setState={setState} />} />
+      <Route path="/" element={<FirstPage state={state} setState={setState} modalActive={modalActive} setModalActive={setModalActive}/>} />
       <Route path="/sign-in" element={<AuthorizationPage />} />
-      <Route path="/categories" element={<CategoriesPage state={state} setState={setState} />} />
-      <Route path="/date" element={<DatePage />} />
+      <Route path="/categories" element={<CategoriesPage state={state} setState={setState} modalActive={modalActive} setModalActive={setModalActive} />} />
+      <Route path="/date" element={<DatePage state={state} setState={setState}  modalActive={modalActive} setModalActive={setModalActive} />} />
       <Route path="/admin" element={<AdminPage/>} />
     </Routes>
   );

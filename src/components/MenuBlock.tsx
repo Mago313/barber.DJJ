@@ -9,7 +9,7 @@ type TProps = {
   link: string
 };
 
-const CategoriesCard = ({name, img, link}: TProps) => {
+const MenuBlock = ({name, img, link}: TProps) => {
   return (
     <Link style={{textDecoration: 'none'}} to={`${link}`}>
       <div className={styles.card}>
@@ -22,4 +22,4 @@ const CategoriesCard = ({name, img, link}: TProps) => {
   );
 };
 
-export default CategoriesCard;
+export default MenuBlock;

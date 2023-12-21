@@ -6,4 +6,5 @@ export type State = {
     price?: number
     dateTime?: string
     phone?: string
+    time?: string
   }

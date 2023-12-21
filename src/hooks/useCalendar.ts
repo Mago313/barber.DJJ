@@ -14,12 +14,23 @@ interface UseCalendarParams {
   firstWeekDayNumber?: number;
 }
 
+interface ITimeIntervals {
+  title: string
+  times: string[]
+}
+
 const DAYS_IN_WEEK = 7;
 
 const getYearsInterval = (year: number) => {
-  const startYear = Math.floor(year / 10) * 10;
+  const startYear = Math.floor(year);
   return [...Array(10)].map((_, index) => startYear + index);
 };
+
+export const timeIntervals: ITimeIntervals[] = [
+  { title: 'Утро', times: ['10:20', '11:00', '11:40'] },
+  { title: 'День', times: ['12:20', '13:00', '13:40', '14:20', '15:00', '15:40'] },
+  { title: 'Вечер', times: ['16:20', '17:00', '16:40', '18:20', '19:00', '19:40', '20:20', '21:00', '21:40'] }
+]
 
 export const useCalendar = ({
   locale = 'default',
@@ -88,6 +99,8 @@ export const useCalendar = ({
     return result;
   }, [selectedMonth.year, selectedMonth.monthIndex, selectedYear]);
 
+
+
   const onClickArrow = (direction: 'right' | 'left') => {
     if (mode === 'years' && direction === 'left') {
       return setSelectedYearsInterval(getYearsInterval(selectedYearsInterval[0] - 10));
@@ -143,7 +156,7 @@ export const useCalendar = ({
       selectedDay,
       selectedMonth,
       selectedYear,
-      selectedYearsInterval
+      selectedYearsInterval,
     },
     functions: {
       onClickArrow,
@@ -151,7 +164,7 @@ export const useCalendar = ({
       setSelectedDay,
       setSelectedMonthByIndex,
       setSelectedYear,
-      setSelectedYearsInterval
+      setSelectedYearsInterval,
     }
   };
 };
