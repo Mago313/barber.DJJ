@@ -26,22 +26,20 @@ const MainLayout: React.FC<Props> = ({
   const { loading, isAdmin, error } = useAppSelector(
     (state) => state.adminSlice
   );
-  
+
   return (
     <div className={styles.root}>
       <div>
         <div className={styles.headerTitle}>
           <div className={styles.headerIcons}>
-            {isArrow ? (
-              <button className={styles.goBack} onClick={() => navigate(-1)}>
-                <img src={arrow} alt=""  />
-              </button>
-            ) : (
-              <div className={styles.emptyBtn} />
-            )}
-            <img src={logo} alt="" width={40} height={40}/>
+
+            <button className={styles.goBack} onClick={() => navigate(-1)}>
+              {isArrow && <img src={arrow} alt="" />}
+            </button>
+
+            <img src={logo} alt="" width={40} height={40} />
             <Link to="/admin" className={isAdmin ? styles.admin : styles.empty}>
-              {isAdmin && (<img src={admin} alt="" width={30} height={30}/>)}
+              {isAdmin && (<img src={admin} alt="" width={30} height={30} />)}
             </Link>
           </div>
           <div className={styles.titleSubtitle}>
